@@ -4,14 +4,17 @@ import org.example.hibernate_test.entity.Employee;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
+
+import java.util.List;
 
 /**
- * Test
+ * Test3
  *
  * @author Stepan Vasilyeu
  * @since 03.06.2022
  */
-public class Test {
+public class Test3 {
     public static void main(String[] args) {
         SessionFactory sessionFactory = new Configuration()
                 .configure("hibernate.cfg.xml")
@@ -20,17 +23,11 @@ public class Test {
 
         try {
             Session session = sessionFactory.getCurrentSession();
-            Employee employee = new Employee("Oleg", "Sidorov", "HR", 700);
             session.beginTransaction();
-            session.save(employee);
-//            session.getTransaction().commit();
-
-            int myId = employee.getId();
-//            session = sessionFactory.getCurrentSession();
-//            session.beginTransaction();
-            Employee employee1 = session.get(Employee.class, myId);
+            List<Employee> employeeList = session.createQuery("FROM Employee WHERE name = 'Oleg' AND salary > 600").getResultList();
+            for (Employee employee: employeeList)
+                System.out.println(employee);
             session.getTransaction().commit();
-            System.out.println(employee1);
         } finally {
 
             sessionFactory.close();
