@@ -30,9 +30,7 @@ public class Employee {
     @JoinColumn(name = "details_id")
     private Detail employeeDetail;
 
-
     public Employee() {}
-
     public Employee(String name, String surName, String department, int salary) {
         this.name = name;
         this.surName = surName;

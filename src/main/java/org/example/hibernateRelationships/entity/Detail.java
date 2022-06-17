@@ -18,7 +18,7 @@ public class Detail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-    @Column(name = "id")
+    @Column(name = "city")
     private String city;
     @Column(name = "phone_number")
     private String phoneNumber;
@@ -26,8 +26,7 @@ public class Detail {
     private String email;
 
     public Detail() {}
-    public Detail(int id, String city, String phoneNumber, String email) {
-        this.id = id;
+    public Detail(String city, String phoneNumber, String email) {
         this.city = city;
         this.phoneNumber = phoneNumber;
         this.email = email;
