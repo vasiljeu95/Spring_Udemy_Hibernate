@@ -1,7 +1,6 @@
 package org.example.hibernateRelationships.entity;
 
 import lombok.Data;
-
 import javax.persistence.*;
 
 /**
@@ -24,6 +23,8 @@ public class Detail {
     private String phoneNumber;
     @Column(name = "email")
     private String email;
+    @OneToOne(mappedBy = "employeeDetail", cascade = CascadeType.ALL)
+    private Employee employee;
 
     public Detail() {}
     public Detail(String city, String phoneNumber, String email) {
